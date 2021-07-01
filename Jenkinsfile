@@ -3,7 +3,7 @@ pipeline {
   //   registry = "oadetiba/node-todo-frontend"
   //   registryCRedential = "dockerhub"
   // }
-  agent any
+  // agent any
   agent {
     docker {
         image 'node:lts-buster-slim'
