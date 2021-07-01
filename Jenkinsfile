@@ -1,36 +1,27 @@
-node {
-    
-	
-
-    env.AWS_ECR_LOGIN=true
-    def newApp
-    def registry = 'gustavoapolinario/microservices-node-todo-frontend'
-    def registryCredential = 'dockerhub'
-	
-	stage('Git') {
-		git 'https://github.com/gustavoapolinario/node-todo-frontend'
-	}
-	stage('Build') {
-		sh 'npm install'
-	}
-	stage('Test') {
-		sh 'npm test'
-	}
-	stage('Building image') {
-        docker.withRegistry( 'https://' + registry, registryCredential ) {
-		    def buildName = registry + ":$BUILD_NUMBER"
-			newApp = docker.build buildName
-			newApp.push()
-        }
-	}
-	stage('Registring image') {
-        docker.withRegistry( 'https://' + registry, registryCredential ) {
-    		newApp.push 'latest2'
-        }
-	}
-    stage('Removing image') {
-        sh "docker rmi $registry:$BUILD_NUMBER"
-        sh "docker rmi $registry:latest"
+pipeline {
+  // environment {
+  //   registry = "oadetiba/node-todo-frontend"
+  //   registryCRedential = "dockerhub"
+  // }
+  // agent any
+  agent {
+    docker {
+        image 'node:lts-buster-slim'
+        args '-p 3000:3000'
     }
-    
+  }
+  stages {
+    stage("Cloning Git repo for node-todo-frontend") {
+      steps {
+        git "https://github.com/cyru8/node-todo-frontend.git"
+      }
+    }
+    stage ("Build Docker Image for nodejs frontend application) {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }      
+  }
 }
