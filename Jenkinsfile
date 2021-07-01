@@ -1,8 +1,8 @@
 pipeline {
-  // environment {
-  //   registry = "oadetiba/node-todo-frontend"
-  //   registryCRedential = "dockerhub"
-  // }
+  environment {
+    // registry = "oadetiba/node-todo-frontend"
+    registryCredential = "dockerhubcreds"
+  }
   // agent any
   agent {
     docker {
@@ -31,7 +31,7 @@ pipeline {
         echo "Workspace is $WORKSPACE"
         dir("$WORKSPACE") {
             script {
-                docker.withRegistry('', 'DockerHub') {
+                docker.withRegistry('', 'dockerhubcreds') {
                             def image = docker.build('oadetiba/node-todo-frontend:v$BUILD_NUMBER')
                             echo "Please proceed to push the images: node-todo-frontend"
                             image.push()
