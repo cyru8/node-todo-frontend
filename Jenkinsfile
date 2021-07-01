@@ -1,8 +1,8 @@
 pipeline {
-  environment {
-    registry = "oadetiba/node-todo-frontend"
-    registryCRedential = "dockerhub"
-  }
+  // environment {
+  //   registry = "oadetiba/node-todo-frontend"
+  //   registryCRedential = "dockerhub"
+  // }
   // agent any
   agent {
     docker {
