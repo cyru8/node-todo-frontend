@@ -3,16 +3,16 @@ pipeline {
   //   registry = "oadetiba/node-todo-frontend"
   //   registryCRedential = "dockerhub"
   // }
-  // agent any
-  // agent {
-  //   docker {
-  //       image 'node:lts-buster-slim'
-  //       args '-p 3000:3000'
-  //   }
-  // }
+  agent any
   agent {
-    label 'node2'
+    docker {
+        image 'node:lts-buster-slim'
+        // args '-p 3000:3000'
+    }
   }
+  // agent {
+  //   label 'node2'
+  // }
   stages {
     stage("Cloning Git repo for node-todo-frontend") {
       steps {
