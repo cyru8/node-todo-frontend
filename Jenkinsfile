@@ -16,7 +16,7 @@ pipeline {
         git "https://github.com/cyru8/node-todo-frontend.git"
       }
     }
-    stage ("Build Docker Image for nodejs frontend application) {
+    stage ("Build Docker Image for nodejs frontend application") {
       steps{
         script {
           docker.build registry + ":$BUILD_NUMBER"
