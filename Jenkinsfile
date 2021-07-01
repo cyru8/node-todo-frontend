@@ -11,7 +11,7 @@ pipeline {
   //   }
   // }
   agent {
-    label 'nodejscoreagent'
+    label 'node2'
   }
   stages {
     stage("Cloning Git repo for node-todo-frontend") {
