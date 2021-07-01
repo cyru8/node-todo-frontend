@@ -31,7 +31,7 @@ pipeline {
         echo "Workspace is $WORKSPACE"
         dir("$WORKSPACE") {
             script {
-                docker.withRegistry('', 'dockerhubcreds') {
+                docker.withRegistry('', 'DockerHub') {
                             def image = docker.build('oadetiba/node-todo-frontend:v$BUILD_NUMBER')
                             echo "Please proceed to push the images: node-todo-frontend"
                             image.push()
