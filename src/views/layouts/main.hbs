@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/png" href="/static/favicon.ico"/>
+	<link type="text/css" rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css"  media="screen,projection"/>
+	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+	<link href="/todo/static/css/todo.css" rel="stylesheet">
+
+	<title>{{title}}</title>
+
+	<base href="/todo/">
+
+</head>
+<body class="bg-light">
+
+
+	<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">Todo Example</a>
+		<button class="navbar-toggler p-0 border-0" type="button" id="bt-menu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="./">TodoApp <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<main role="main" class="container">
+
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+			<div class="pb-2 d-flex flex-row">
+				<h6 class="mr-auto p-2 pt-3">{{ title }}</h6>
+				<small class="p-2">
+					<a href="new" class="btn btn-primary" title="Add New Task">
+						<i class="fa fa-plus"></i>
+					</a>
+				</small>
+			</div>
+			{{#unless todoItem}}
+			<form class="form-inline input-group mb-2">
+				<input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search">
+				<div class="input-group-append">
+					<button class="btn btn-secondary" type="submit">Search</button>
+				</div>
+			</form>
+			{{/unless}}
+
+			{{{ body }}}
+		</div>
+	</main>
+
+	<script src="/todo/static/js/todo.js"></script>
+</body>
+</html>
