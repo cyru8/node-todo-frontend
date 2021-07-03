@@ -3,16 +3,9 @@ pipeline {
     // registry = "oadetiba/node-todo-frontend"
     registryCredential = "dockerhubcreds"
   }
-  // agent any
   agent {
-    docker {
-        image 'node:lts-buster-slim'
-        // args '-p 3000:3000'
-    }
+    label 'nodejscoreagent'
   }
-  // agent {
-  //   label 'node2'
-  // }
   stages {
     stage("Cloning Git repo for node-todo-frontend") {
       steps {
