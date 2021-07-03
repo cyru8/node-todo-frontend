@@ -7,11 +7,11 @@ pipeline {
     label 'nodejscoreagent'
   }
   stages {
-    stage("Cloning Git repo for node-todo-frontend") {
-      steps {
-        git "https://github.com/cyru8/node-todo-frontend.git"
-      }
-    }
+    // stage("Cloning Git repo for node-todo-frontend") {
+    //   steps {
+    //     git "https://github.com/cyru8/node-todo-frontend.git"
+    //   }
+    // }
     // stage ("Build Docker Image for nodejs frontend application") {
     //   steps{
     //     script {
